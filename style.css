@@ -193,6 +193,57 @@ p {
     margin-bottom: 10px;
 }
 
+/* Profile Display Additions */
+.profile-header-block {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    background: rgba(17, 24, 39, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+}
+
+.profile-img-container {
+    position: relative;
+}
+
+.profile-img-frame {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.profile-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #111827;
+}
+
+.profile-meta h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #fff, #9ca3af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-meta p {
+    margin-bottom: 0;
+    color: var(--neon-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 /* Footer Section */
 footer {
     text-align: center;
@@ -201,4 +252,153 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid #1f2937;
     margin-top: 60px;
+}
+
+/* ==========================================================================
+   🖼️ Animated Album Gallery & Zoom Lightbox System
+   ========================================================================== */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.album-card {
+    background: #0d1527;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+
+.album-img-wrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    background: #111827;
+}
+
+.album-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.album-info {
+    padding: 20px;
+    border-top: 1px solid #1f2937;
+    background: var(--card-bg);
+}
+
+.album-info h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.album-info span {
+    font-size: 0.85rem;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Album Hover Animations */
+.album-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 242, 254, 0.15);
+    border-color: var(--neon-blue);
+}
+
+.album-card:hover .album-img-wrapper img {
+    transform: scale(1.08);
+}
+
+.album-card:hover .album-info h3 {
+    color: var(--neon-blue);
+}
+
+/* 🔍 Overlay Zoom Modal Framework */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 10, 26, 0.95);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.zoom-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.zoom-content {
+    background: var(--card-bg);
+    border: 2px solid #1f2937;
+    border-radius: 16px;
+    max-width: 650px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.25);
+    position: relative;
+    transform: scale(0.7) translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.zoom-overlay.active .zoom-content {
+    transform: scale(1) translateY(0);
+}
+
+.zoom-content img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-bottom: 1px solid #1f2937;
+}
+
+.zoom-details {
+    padding: 30px;
+}
+
+.zoom-details h2 {
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.zoom-details p {
+    margin-bottom: 0;
+    color: var(--text-muted);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 300;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--neon-blue);
 }
