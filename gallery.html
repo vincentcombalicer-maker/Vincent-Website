@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | VRC SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">VRC THE IT STUDENT</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="profile-header-block">
+            <div class="profile-img-container">
+                <div class="profile-img-frame">
+                    <img src="vincentprofile.jpg" onerror="this.src='vincentprofile.png'; this.onerror=null;" alt="Vincent Combalicer">
+                </div>
+            </div>
+            <div class="profile-meta">
+                <h1>INTERACTIVE ALBUM GALLERY</h1>
+                <p>Click any album item to zoom in and read the detailed tactical logs.</p>
+            </div>
+        </div>
+
+        <div class="slideshow-frame">
+            <div class="slideshow-inner">
+                <div class="slide-text">VISUALIZING HISTORY AND MILESTONES.</div>
+                <div class="slide-text">CLICK CARDS TO DISCOVER DETAILED INSIGHTS.</div>
+                <div class="slide-text">DYNAMIC RESPONSIVE INTERFACE BUILT RAW.</div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>Vincent's Album Collections</h2>
+            <p>Select an item to expand the dynamic viewpoint frame:</p>
+            
+            <div class="album-grid">
+                <div class="album-card" onclick="openZoomView('APRIL 29 2026 MY BDAY.jpg', 'April 29 Birthday Celebration', 'Celebrating my birthday surrounded by family and good friends at our local family restaurant enterprise, KIZUNA-Q Food and Beverage Trading. Balancing rigorous IT studies with strong community and family bonds keeps my operations grounded.')">
+                    <div class="album-img-wrapper">
+                        <img src="APRIL 29 2026 MY BDAY.jpg" alt="Birthday Celebration">
+                    </div>
+                    <div class="album-info">
+                        <h3>Birthday at KIZUNA-Q</h3>
+                        <span>View Logs</span>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openZoomView('TOP GEN-Z 1ST PLACE 2026.jpg', 'Top Gen-Z 1st Place Champion', 'Securing a dominant 1st place grand champion finish at the 2026 Rapid Chess Tournament held during the Hayin Festival in Infanta, Quezon. Outmaneuvering competitive strategic layouts under standard Swiss System time controls.')">
+                    <div class="album-img-wrapper">
+                        <img src="TOP GEN-Z 1ST PLACE 2026.jpg" alt="Top Gen-Z Champion">
+                    </div>
+                    <div class="album-info">
+                        <h3>Infanta Tournament Triumph</h3>
+                        <span>View Records</span>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openZoomView('CHESS INTRAMS CHAMPION 2026.jpg', 'PUP San Juan Intramurals 2026', 'Defending the title and capturing back-to-back gold medals at the Polytechnic University of the Philippines San Juan Campus Intramurals. Leading the Technology department chess squad to a clean, strategic victory.')">
+                    <div class="album-img-wrapper">
+                        <img src="CHESS INTRAMS CHAMPION 2026.jpg" alt="Intrams 2026 Champion">
+                    </div>
+                    <div class="album-info">
+                        <h3>PUP SJ Intrams 2026</h3>
+                        <span>View Details</span>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openZoomView('INTRAM CHESS CHAMPION 2025.jpg', 'PUP San Juan Intramurals 2025', 'Standing victorious on the home grounds of PUP San Juan Campus during the 2025 Intramurals. This tournament established early deployment proof that calculated, pressure-tested logic wins championships.')">
+                    <div class="album-img-wrapper">
+                        <img src="INTRAM CHESS CHAMPION 2025.jpg" alt="Intrams 2025 Gold Medalist">
+                    </div>
+                    <div class="album-info">
+                        <h3>PUP SJ Intrams 2025</h3>
+                        <span>View Details</span>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openZoomView('G12 STEM-8.jpg', 'Grade 12 STEM Graduation at PICC', 'A massive milestone celebrating graduation from Grade 12 STEM at the prestigious Philippine International Convention Center (PICC). This foundational track forged the mathematical, analytical, and logical base required for high-tier IT engineering.')">
+                    <div class="album-img-wrapper">
+                        <img src="G12 STEM-8.jpg" alt="STEM Graduation">
+                    </div>
+                    <div class="album-info">
+                        <h3>STEM Graduation at PICC</h3>
+                        <span>View Milestones</span>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="openZoomView('NCAA WIN AGAINTS JRU.jpg', 'NCAA Varsity Victory vs JRU', 'An intense, high-pressure 6-hour marathon chess match representing the varsity squad at the Letran school venue. Earned a hard-fought tactical victory against Jose Rizal University (JRU) through deep pattern calculation and mental endurance.')">
+                    <div class="album-img-wrapper">
+                        <img src="NCAA WIN AGAINTS JRU.jpg" alt="NCAA Varsity Chess Match">
+                    </div>
+                    <div class="album-info">
+                        <h3>NCAA Varsity Match vs JRU</h3>
+                        <span>View Battle Logs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="zoomOverlay" class="zoom-overlay" onclick="closeZoomView()">
+        <div class="zoom-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeZoomView()">&times;</span>
+            <img id="zoomedImage" src="" alt="Zoomed view">
+            <div class="zoom-details">
+                <h2 id="zoomTitle">Album Title</h2>
+                <p id="zoomDesc">Album description updates dynamically here.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Vincent R. Combalicer | PUP San Juan
+    </footer>
+
+    <script>
+        function openZoomView(imgSrc, title, description) {
+            const overlay = document.getElementById('zoomOverlay');
+            const zoomedImg = document.getElementById('zoomedImage');
+            const zoomTitle = document.getElementById('zoomTitle');
+            const zoomDesc = document.getElementById('zoomDesc');
+
+            zoomedImg.src = imgSrc;
+            zoomTitle.innerText = title;
+            zoomDesc.innerText = description;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeZoomView() {
+            const overlay = document.getElementById('zoomOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+</body>
+</html>
